@@ -1,0 +1,43 @@
+{% if user.is_authenticated%}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+</head>
+<body>
+	<h1>{{header}}</h1>
+	<table border="1">
+		<tr>
+			<th>#</th>
+			<th>IP Address</th>
+			<th>Kode Toko</th>
+			<th>Nama Toko</th>
+			<th>SID</th>
+			<th>IP Public</th>
+			<th>Complain</th>
+		</tr>
+		<tr>
+			{% for list_tables in list_table%}
+				<td>{{list_tables.id}}</td>
+				<td>{{list_tables.ip_address}}</td>
+				<td>{{list_tables.kode_toko}}</td>
+				<td>{{list_tables.nama_toko}}</td>
+				<td>{{list_tables.sid}}</td>
+				<td>{{list_tables.ip_public}}</td>
+				<td><button type="submit">Complain</button></td>
+			{%endfor%}
+		</tr>
+	</table>
+</body>
+</html>
+{%else%}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login First !!!!</title>
+</head>
+<body>
+	<h5>Please login first ...</h5>
+</body>
+</html>
+{%endif%}
