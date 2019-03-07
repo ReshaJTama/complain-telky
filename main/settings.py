@@ -76,8 +76,10 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ipam',
+        'USERNAME':'root',
+        'PASSWORD':'toor',
     }
 }
 
@@ -123,13 +125,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIR = 'static'
 
 LOGIN_REDIRECT_URL = '/complain/'
-
-
-
-# Example for using Gmail
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'foolgum01@gmail.com'
-EMAIL_HOST_PASSWORD = 'Warior123'

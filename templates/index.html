@@ -16,17 +16,18 @@
 			<th>IP Public</th>
 			<th>Complain</th>
 		</tr>
-		<tr>
+		
 			{% for list_tables in list_table%}
+			<tr>
 				<td>{{list_tables.id}}</td>
-				<td>{{list_tables.ip_address}}</td>
-				<td>{{list_tables.kode_toko}}</td>
-				<td>{{list_tables.nama_toko}}</td>
-				<td>{{list_tables.sid}}</td>
+				<td>{{list_tables.ip_addr}}</td>
+				<td>{{list_tables.description}}</td>
+				<td>{{list_tables.customer_id}}</td>
 				<td>{{list_tables.ip_public}}</td>
 				<td><button type="submit">Complain</button></td>
+			</tr>
 			{%endfor%}
-		</tr>
+		
 	</table>
 </body>
 </html>
