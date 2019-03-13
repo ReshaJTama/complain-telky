@@ -11,7 +11,6 @@
 			<th>#</th>
 			<th>IP Address</th>
 			<th>Kode Toko</th>
-			<th>Nama Toko</th>
 			<th>SID</th>
 			<th>IP Public</th>
 			<th>Complain</th>
@@ -24,7 +23,7 @@
 				<td>{{list_tables.description}}</td>
 				<td>{{list_tables.customer_id}}</td>
 				<td>{{list_tables.ip_public}}</td>
-				<td><button type="submit">Complain</button></td>
+				<td><a href={{list_tables.id}}><button type="submit">Complain</button></a></td>
 			</tr>
 			{%endfor%}
 		
