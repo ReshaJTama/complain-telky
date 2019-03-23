@@ -2,8 +2,10 @@ import ipaddress, IPy
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import complain_base
-from django.template import loader
+from django.template import loader,Context
+from django.template.loader import get_template,render_to_string
 
+import sys, socket
 from django.core.mail import send_mail
 # Create your views here.
 
@@ -14,15 +16,37 @@ def index(request):
 		'header':'Complain Telky',
 		'list_table':list_table
 	}
-	return render(request,'index.html',context)
+	return render(request,'list.html',context)
+
+
+def list_toko(request):
+	list_table = complain_base.objects.all()
+
+	cek = complain_base.objects.get()
+
+	context = {
+		'title':'Complain Telky',
+		'header':'Complain Telky',
+		'list_table':list_table,
+		'ip_address':ip_address,
+		'status':x
+
+# 		'id':list_table.id,
+# 		'kode_toko':list_table.kode_toko,
+# 		'sid':list_table.sid,
+# 		'ip_address':list_table.ip_address,
+# 		'ip_public':list_table.ip_public,
+
+	}
+	return render(request,'list.html',context)
 
 def email(request,id):
-	
+
 	context = {
 		'items': complain_base.objects.get(id=id)
 	}
 	items = complain_base.objects.get(id=id)
-		
+
 		# IP Address
 	test = items.ip_addr
 	ip_address = IPy.IP(test).strNormal()
@@ -39,16 +63,16 @@ def email(request,id):
 	else:
 		sid = 'No SID'
 	# body = "<table>"ip_address+' '+kode_toko+' '+sid+"</table>"
-	body = "<table border=1><tr><td>Kode Toko</td><td>"+kode_toko+"</td></tr><tr><td>IP Public</td><td>"+ip_public+"</td></tr><tr><td>SID</td><td>"+sid+"</td></tr><tr><td>PIC Toko</td><td>NO HP</td></tr></table>"
-	print(id)
+	msg_html = render_to_string('email.html',{'kode_toko':kode_toko,'ip_public':ip_public,'sid':sid})
+
 	try:
 		send_mail(
 			'Jaringan Bermasalah',
-			body,
+			'Mohon di bantu jaringan astinet bermasalah',
 			'user01@test.com',
 			['user02@test.com'],
 			fail_silently=False,
-			html_message = body,
+			html_message = msg_html,
 			)
 		return HttpResponse('Berhasil di Kirim')
 	except:

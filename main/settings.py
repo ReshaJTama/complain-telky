@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'complain',
+    'network',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIR = 'static'
-
 LOGIN_REDIRECT_URL = '/complain/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),'static']
