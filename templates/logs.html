@@ -1,0 +1,30 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<title>Logs</title>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<td>#</td>
+			<td>Nama Toko</td>
+			<td>IP Address</td>
+			<td>IP Public</td>
+			<td>SID</td>
+			<td>Waktu Complain</td>
+			<td>Tanggal Complain</td>
+		</thead>
+		{% for logs in log %}
+			<tr>
+				<td>{{logs.id}}</td>
+				<td>{{logs.description}}</td>
+				<td>{{logs.ip_addr}}</td>
+				<td>{{logs.ip_public}}</td>
+				<td>{{logs.customer_id}}</td>
+				<td>{{logs.time_t}}</td>
+				<td>{{logs.date_t}}</td>
+			</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>
