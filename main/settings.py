@@ -25,7 +25,7 @@ SECRET_KEY = '#k_(0so*qk3m19pisy1d$vi@7mps2$&z7!w*_3&6&jz1@i-9^%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,7 +80,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ipam',
         'USERNAME':'root',
-        'PASSWORD':'toor',
+        'PASSWORD':'12345ui',
+	'OPTIONS':{
+		'isolation_level':None
+	}
     }
 }
 
@@ -126,3 +129,10 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/complain/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),'static']
+
+
+EMAIL_HOST ='192.168.81.201'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'edp_net2@bgr2.indomaret.co.id'
+EMAIL_HOST_PASSWORD = 'edp_net2'
+EMAIL_USE_TLS = True

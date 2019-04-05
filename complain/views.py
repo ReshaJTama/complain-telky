@@ -21,7 +21,6 @@ def index(request):
 	}
 	return render(request,'list.html',context)
 
-@login_required
 def list_toko(request):
 	
 
@@ -83,8 +82,8 @@ def email(request,id):
 		send_mail(
 			'Jaringan Bermasalah',
 			'Mohon di bantu jaringan astinet bermasalah',
-			'user01@test.com',
-			['user02@test.com'],
+			'edp_net2@bgr2.indomaret.co.id',
+			['edp_net@bgr2.indomaret.co.id'],
 			fail_silently=False,
 			html_message = msg_html,
 			)
